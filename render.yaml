@@ -1,6 +1,5 @@
 services:
   - type: web
-    name: Jobs_API
-    env: java  # Force Java environment
-    buildCommand: ./mvnw clean package
-    startCommand: java -jar target/*.jar
+    name: jobs-api
+    runtime: docker
+    dockerfilePath: Dockerfile  # Explicit path
