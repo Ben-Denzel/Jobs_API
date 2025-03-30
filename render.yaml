@@ -2,4 +2,11 @@ services:
   - type: web
     name: jobs-api
     runtime: docker
-    dockerfilePath: Dockerfile  # Explicit path
+    env: java
+    buildCommand: chmod +x mvnw && ./mvnw clean package -DskipTests
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE
+        value: "4"
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
